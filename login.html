@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FreshFlow | Log in</title><link rel="stylesheet" href="style.css">
+<script>
+/* Already logged in? Go straight to the dashboard */
+(function(){var s=null;try{s=JSON.parse(sessionStorage.getItem('ff_session'))}catch(e){}
+if(!s){try{if(window.name.indexOf('ff_session:')===0)s=JSON.parse(window.name.slice(11))}catch(e){}}
+if(s&&s.username)location.replace('index.html')})();
+</script>
+</head>
+<body>
+<section class="auth" id="auth">
+<div class="auth-card">
+<div class="auth-side"><div class="brand light"><span class="brand-icon">✳</span><div><b>FreshFlow</b><small>PRODUCTION OS</small></div></div><h2>Every minute<br>counts on the line.</h2><p>Sign in to plan production tasks with non-preemptive Shortest Job First scheduling.</p><small class="auth-tag">FRESH • FAST • EFFICIENT</small></div>
+<div class="auth-main">
+<form id="loginForm" class="auth-form" autocomplete="on" novalidate>
+<small class="eyebrow">WELCOME BACK</small><h2>Log in</h2><p class="auth-sub">Enter your username and password to open the scheduler.</p>
+<label for="loginUser">Username</label><input id="loginUser" autocomplete="username" placeholder="e.g. admin">
+<label for="loginPass">Password</label><div class="pass-wrap"><input id="loginPass" type="password" autocomplete="current-password" placeholder="Your password"><button type="button" class="eye" data-eye="loginPass" aria-label="Show password">👁</button></div>
+<div class="auth-error" id="loginError"></div>
+<button class="primary auth-btn" type="submit">Log in →</button>
+<p class="auth-switch">New to FreshFlow? <a href="#" id="toSignup">Create an account</a></p>
+<div class="demo-box"><b>Demo account</b><span>Username: <code>admin</code></span><span>Password: <code>FreshFlow@123</code></span></div>
+</form>
+<form id="signupForm" class="auth-form hidden" autocomplete="off" novalidate>
+<small class="eyebrow">GET STARTED</small><h2>Sign up</h2><p class="auth-sub">Create an account to manage your production tasks.</p>
+<label for="suName">Full name</label><input id="suName" maxlength="40" placeholder="e.g. Asha Patil">
+<label for="suUser">Username <span>(4–20 letters, numbers or _)</span></label><input id="suUser" maxlength="20" placeholder="e.g. asha_p">
+<label for="suPass">Password <span>(min 6, with a letter and a number)</span></label><div class="pass-wrap"><input id="suPass" type="password" autocomplete="new-password" placeholder="Create a password"><button type="button" class="eye" data-eye="suPass" aria-label="Show password">👁</button></div>
+<label for="suConfirm">Confirm password</label><div class="pass-wrap"><input id="suConfirm" type="password" autocomplete="new-password" placeholder="Repeat the password"><button type="button" class="eye" data-eye="suConfirm" aria-label="Show password">👁</button></div>
+<div class="auth-error" id="signupError"></div>
+<button class="primary auth-btn" type="submit">Create account →</button>
+<p class="auth-switch">Already have an account? <a href="#" id="toLogin">Log in</a></p>
+</form>
+</div></div></section>
+<div class="toast" id="toast"></div>
+<script src="auth.js"></script>
+</body>
+</html>
